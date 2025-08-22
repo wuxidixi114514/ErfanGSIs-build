@@ -24,6 +24,14 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
+      - name: 修复pycrypto编译环境
+        run: |
+         sudo apt-get update
+         sudo apt-get install -y python3-dev libssl-dev zlib1g-dev
+         pip uninstall -y pycrypto
+         pip install pycryptodome
+
+    
        - name: Checkout
          uses: actions/checkout@master
 
