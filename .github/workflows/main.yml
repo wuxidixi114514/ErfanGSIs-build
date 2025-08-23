@@ -31,7 +31,14 @@ jobs:
             sudo apt-get install -y python3-dev libssl-dev zlib1g-dev
             pip uninstall -y pycrypto
             pip install pycryptodome
-
+     
+       - name: 修复 Python 头文件问题
+         run: |
+            sudo apt-get install -y python3-dev python3-venv
+            python3 -m venv .venv
+            source .venv/bin/activate
+            pip uninstall -y pycrypto
+            pip install pycryptodome
        - name: Checkout
          uses: actions/checkout@master
 
