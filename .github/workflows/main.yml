@@ -39,6 +39,15 @@ jobs:
             source .venv/bin/activate
             pip uninstall -y pycrypto
             pip install pycryptodome
+           
+       - name: 解决 Python 3.12 头文件冲突
+         run: |
+            sudo apt-get install -y python3.10-dev libssl-dev zlib1g-dev
+            python3.10 -m venv .venv
+            source .venv/bin/activate
+            pip uninstall -y pycrypto
+            pip install --no-cache-dir pycryptodome
+
        - name: Checkout
          uses: actions/checkout@master
 
