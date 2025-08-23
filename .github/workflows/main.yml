@@ -25,6 +25,9 @@ jobs:
 
     steps:
 
+       - name: Checkout
+         uses: actions/checkout@master    
+
        - name: 设置 Python 3.10
          uses: actions/setup-python@v5
          with:
@@ -39,9 +42,6 @@ jobs:
        - name: 安装依赖
          run: |
             pip install -r requirements.txt
-
-       - name: Checkout
-         uses: actions/checkout@master
 
        - name: Cleanup
          uses: rokibhasansagar/slimhub_actions@main
