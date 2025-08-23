@@ -29,6 +29,16 @@ jobs:
          uses: actions/setup-python@v5
          with:
            python-version: "3.10"
+           
+       - name: 使用预配置 Python 环境
+         run: |
+            pip uninstall -y pycrypto
+            pip install --upgrade pip setuptools
+            pip install pycryptodome cryptography
+
+       - name: 安装依赖
+         run: |
+            pip install -r requirements.txt
 
        - name: Checkout
          uses: actions/checkout@master
